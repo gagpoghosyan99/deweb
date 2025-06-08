@@ -1,0 +1,162 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Welcome to Deweb{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-gray-950 text-white py-20 px-4 sm:px-8 lg:px-16">
+  <div class="max-w-7xl mx-auto text-center">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+      Unlock Developer Power. Instantly.
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+      Download ready-to-use Telegram bots, code templates, and digital tools. Sell, share, or launch your next idea faster.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg text-sm font-semibold transition">Browse Marketplace</a>
+      <a href="#" class="border border-gray-700 hover:border-white text-white py-3 px-6 rounded-lg text-sm font-semibold transition">Subscribe for Updates</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Deweb -->
+<section class="bg-gray-950 text-white py-16 px-4">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-12">Why Choose Deweb?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold mb-4">Secure Code Delivery</h3>
+        <p class="text-gray-400">All your code is delivered securely to buyers through encrypted channels.</p>
+      </div>
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold mb-4">Instant Payments</h3>
+        <p class="text-gray-400">Get paid instantly via PayPal or crypto with zero delay.</p>
+      </div>
+      <div class="bg-gray-900 p-8 rounded-2xl shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold mb-4">Customizable Pages</h3>
+        <p class="text-gray-400">Showcase your code with beautifully designed product pages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="bg-gray-900 text-white py-16 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-10">What Our Clients Say</h2>
+    <div class="space-y-8">
+      <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+        <p class="text-lg italic">"This platform helped me sell my Telegram bot within 24 hours!"</p>
+        <p class="mt-4 text-gray-400">— Arman, Developer</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+        <p class="text-lg italic">"The easiest way I’ve found to monetize my Python scripts!"</p>
+        <p class="mt-4 text-gray-400">— Mariam, Freelancer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Screenshot -->
+<section class="bg-gray-950 text-white py-16 px-4">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-6">Showcase Your Product</h2>
+    <p class="text-gray-400 mb-8">Upload screenshots or even demo GIFs of your product pages, bot panels, etc.</p>
+    <div class="flex justify-center">
+      <img src="{% static 'main/images/product-preview.png' %}" alt="Product Screenshot"
+     class="rounded-xl border border-gray-800 shadow-lg w-full max-w-4xl">
+
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Plan -->
+<section class="bg-gray-900 text-white py-16 px-4">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-10">Choose Your Access</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-800 p-8 rounded-2xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">Starter</h3>
+        <p class="text-2xl font-bold mb-4">$0</p>
+        <ul class="text-gray-400 space-y-2">
+          <li>1 Code Upload</li>
+          <li>Basic Support</li>
+        </ul>
+      </div>
+      <div class="bg-blue-700 p-8 rounded-2xl shadow-md border-4 border-blue-500">
+        <h3 class="text-xl font-semibold mb-2">Pro Seller</h3>
+        <p class="text-2xl font-bold mb-4">$29/mo</p>
+        <ul class="text-white space-y-2">
+          <li>Unlimited Products</li>
+          <li>Priority Support</li>
+          <li>Analytics Dashboard</li>
+        </ul>
+      </div>
+      <div class="bg-gray-800 p-8 rounded-2xl shadow-md">
+        <h3 class="text-xl font-semibold mb-2">Custom</h3>
+        <p class="text-2xl font-bold mb-4">Contact Us</p>
+        <ul class="text-gray-400 space-y-2">
+          <li>Tailored Plan</li>
+          <li>Dedicated Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="bg-gray-950 text-white py-16 px-4">
+  <div class="max-w-xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-4">Get the Latest Code Drops</h2>
+    <p class="text-gray-400 mb-6">Join our newsletter to get new tools and offers before anyone else.</p>
+    <form method="POST" action="/subscribe" class="flex flex-col sm:flex-row gap-4 justify-center">
+      <input type="email" name="email" placeholder="Your email address"
+             class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <button type="submit"
+              class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium transition">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white mt-16">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <h4 class="text-xl font-semibold mb-4">Deweb</h4>
+      <p class="text-sm text-gray-400">Your trusted source for developer tools and code packs.</p>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Marketplace</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">Popular</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Company</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Support</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center text-gray-500 text-sm py-4 border-t border-gray-700">
+    © 2025 Deweb. All rights reserved.
+  </div>
+</footer>
+
+{% endblock %}
