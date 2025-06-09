@@ -7,8 +7,9 @@ def home(request):
 
 
 def product_list(request):
-    q = request.GET.get('q', '')  
-    products = Product.objects.filter(title__icontains=q).order_by('-created_at')
+    q = request.GET.get('q', '')
+    products = Product.objects.filter(
+        title__icontains=q).order_by('-created_at')
     return render(request, 'main/products.html', {
         'products': products,
         'query': q,
