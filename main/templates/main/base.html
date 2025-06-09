@@ -5,25 +5,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}Deweb{% endblock %}</title>
-  
-  <!-- Tailwind CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  
-  <!-- Optional: your custom static CSS -->
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+        rel="stylesheet">
+
+  <!-- Your custom CSS -->
   <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
 <body class="bg-gray-900 text-white">
+
   <header class="bg-gray-800 shadow">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/" class="text-xl font-bold">Deweb</a>
+      <a href="{% url 'home' %}" class="text-xl font-bold">Deweb</a>
       <nav class="space-x-4">
-        <nav class="space-x-4">
-  <a href="{% url 'home' %}" class="hover:text-purple-400">Home</a>
-  <a href="{% url 'products' %}" class="hover:text-purple-400">Products</a>
-  <a href="{% url 'pricing' %}" class="hover:text-purple-400">Pricing</a>
-  <a href="{% url 'contact' %}" class="hover:text-purple-400">Contact</a>
-</nav>
-
+        <a href="{% url 'home' %}"     class="hover:text-purple-400">Home</a>
+        <a href="{% url 'product_list' %}" class="hover:text-purple-400">Products</a>
+        <a href="{% url 'pricing' %}"  class="hover:text-purple-400">Pricing</a>
+        <a href="{% url 'contact' %}"  class="hover:text-purple-400">Contact</a>
       </nav>
     </div>
   </header>
@@ -32,5 +31,6 @@
     {% block content %}
     {% endblock %}
   </main>
+
 </body>
 </html>

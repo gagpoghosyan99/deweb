@@ -1,40 +1,60 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Products{% endblock %}
+{% block title %}Products | Deweb{% endblock %}
 
 {% block content %}
 <section class="bg-gray-950 text-white py-16 px-4">
   <div class="max-w-7xl mx-auto text-center">
-    <h2 class="text-4xl font-bold mb-8">Our Code Products</h2>
 
+    <h2 class="text-4xl font-bold mb-4">Our Code Products</h2>
+
+    <!-- 🔍 Search Form -->
+    <form method="get" action="{% url 'product_list' %}" class="mb-8 inline-block">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        placeholder="Search products…"
+        class="px-4 py-2 rounded-l-lg bg-gray-800 text-white focus:outline-none"
+      />
+      <button
+        type="submit"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-r-lg"
+      >
+        Search
+      </button>
+    </form>
+
+    <!-- No-results message -->
+    {% if query and products|length == 0 %}
+      <p class="text-gray-400 mb-6">No results for “{{ query }}”.</p>
+    {% endif %}
+
+    <!-- 🔳 Product Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Product Card 1 -->
-      <div class="bg-gray-900 p-6 rounded-xl shadow hover:shadow-lg transition">
-        <img src="{% static 'main/images/product-preview.png' %}" alt="Product" class="rounded mb-4 w-full h-48 object-cover">
-        <h3 class="text-xl font-semibold mb-2">Telegram Bot: Crypto Tracker</h3>
-        <p class="text-gray-400 mb-3">Real-time updates on market prices and charts via Telegram.</p>
-        <a href="#" class="text-blue-500 hover:underline">View Details</a>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="bg-gray-900 p-6 rounded-xl shadow hover:shadow-lg transition">
-        <img src="{% static 'main/images/product-preview.png' %}" alt="Product" class="rounded mb-4 w-full h-48 object-cover">
-        <h3 class="text-xl font-semibold mb-2">E-Commerce Landing Page</h3>
-        <p class="text-gray-400 mb-3">Fully responsive landing page built with Tailwind CSS.</p>
-        <a href="#" class="text-blue-500 hover:underline">View Details</a>
-      </div>
-
-      <!-- Product Card 3 -->
-      <div class="bg-gray-900 p-6 rounded-xl shadow hover:shadow-lg transition">
-        <img src="{% static 'main/images/product-preview.png' %}" alt="Product" class="rounded mb-4 w-full h-48 object-cover">
-        <h3 class="text-xl font-semibold mb-2">AI Content Generator</h3>
-        <p class="text-gray-400 mb-3">Flask app that generates blog content using OpenAI.</p>
-        <a href="#" class="text-blue-500 hover:underline">View Details</a>
-      </div>
-
+      {% for product in products %}
+        <div class="bg-gray-900 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <img
+            src="{{ product.image.url }}"
+            alt="{{ product.title }}"
+            class="rounded mb-4 w-full h-48 object-cover"
+          />
+          <h3 class="text-xl font-semibold mb-2">{{ product.title }}</h3>
+          <p class="text-gray-400 mb-3">{{ product.description|truncatewords:15 }}</p>
+          <span class="block text-blue-400 font-semibold mb-2">${{ product.price }}</span>
+          <a
+            href="{% url 'product_detail' product.pk %}"
+            class="text-blue-500 hover:underline"
+          >
+            View Details
+          </a>
+        </div>
+      {% empty %}
+        <p class="text-gray-400">No products available yet.</p>
+      {% endfor %}
     </div>
+
   </div>
 </section>
 {% endblock %}
